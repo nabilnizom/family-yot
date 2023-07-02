@@ -12,7 +12,8 @@ export default function Form () {
     const [amount, setAmount] = useState(1)
     const [formField, setFormField] = useState<any[]>([])
     const [listType, setListType] = useState<any>({})
-    const [newBaju, setNewBaju] = useState<any>({})
+    const [newBaju, setNewBaju] = useState<any>({}) 
+    const [message, setMessage] = useState<string>('')
 
     useEffect(() => {
         setListType({...listType, ...newBaju})
@@ -140,11 +141,12 @@ export default function Form () {
         }
 
         const res = await fetch('/api/borang', opt)
-
-        const result = await res.json()
-        console.log(result)
+        if (res.status === 200) {
+            setMessage(`Terima kasih ${data.wakil}.`)
+        }
     }
     return (
+        <>
         <section className="max-w-4xl min-w-1/2 p-6 mx-4 md:mx-auto bg-white rounded-md shadow-md">
         <h2 className="text-lg font-semibold text-gray-700 capitalize">Borang Tempahan Baju</h2>
         <br/>
@@ -178,6 +180,14 @@ export default function Form () {
                         Delete
                     </button>
                 </div>
-    </section>
+        </section>
+
+                <br/>
+        <div className="w-full flex justify-center">
+            <p className="text-neutral-600">
+                {message}
+            </p>
+        </div>
+        </>
     )
 }
