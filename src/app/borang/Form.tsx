@@ -59,7 +59,30 @@ export default function Form () {
         setFormField(newFormField)
     },[amount])
 
+    const kidsSize: Option[] = [
+        {
+            value: '26',
+            label: '26'
+        },
+        {
+            value: '28',
+            label: '28'
+        },
+        {
+            value: '30',
+            label: '30'
+        },
+        {
+            value: '32',
+            label: '32'
+        }
+    ]
+
     const size: Option[] = [
+        {
+            value: '2xs',
+            label: 'XXS',
+        },
         {
             value: 'xs',
             label: 'XS',
@@ -89,8 +112,8 @@ export default function Form () {
             label: '3XL'
         },
         {
-            value: '4xl',
-            label: '4XL'
+            value: '5xl',
+            label: '5XL'
         }
     ]
     const options: Option[] = [
@@ -107,7 +130,7 @@ export default function Form () {
         {
             value: 'kids',
             label: 'Kanak-kanak',
-            children: size
+            children: kidsSize
         }
     ]
 
