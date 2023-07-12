@@ -14,14 +14,14 @@ export default function Table () {
         const data = await res.json()
         setContent( data.map((item: any) => {
             return (
-                <Card title={item.wakil} key={item.wakil}>
+                <Card title={<span className="capitalize">{item.wakil.toLowerCase()}</span>} key={item.wakil}>
                 {
                     item.listBaju.map((lb: any) => {
                         if (!lb.baju || !lb.nama) {
                             return <></>
                         }
                         return (
-                            <p key={`${item.wakil}|nama`}>{lb.nama}</p>
+                            <p className="capitalize" key={`${item.wakil}|nama`}>{lb.nama.toLowerCase()}</p>
                             )
                         })
                     }
