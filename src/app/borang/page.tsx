@@ -9,16 +9,22 @@ import Input from "antd/es/input/Input";
 
 export default function Borang () {
     const [password, setPassword] = useState<string>('')
+    const [adminStatus, setAdminStatus] = useState<string | null>('')
+
     const isAdmin = useMemo(() => {
-        return localStorage.getItem('admin') === 'true'
+        return adminStatus === 'true'
     }, [])
     
+    useEffect(() => {
+        setAdminStatus(localStorage.getItem('admin'))
+    }, [])
+
     useEffect(() => {
         if (password === '980312106514') {
             localStorage.setItem('admin', 'true')
             window.location.href = '/list'
         }
-    })
+    },[password])
     
     return (
         <div className="bg-white w-screen h-screen flex flex-col">
