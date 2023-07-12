@@ -19,3 +19,12 @@ export async function POST(req: any, res: any) {
         return new Response("success")
     }
 }
+
+export async function GET(req: any, res: any) {
+    const client = await clientPromise
+    const db = client.db('family-day')
+
+    const result = await db.collection('baju').find().toArray()
+
+    return new Response(JSON.stringify(result))
+}
